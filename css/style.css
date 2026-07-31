@@ -332,6 +332,11 @@ a { color: inherit; }
 
 .badges li:first-child { background: var(--violet); color: var(--on-accent); }
 
+/* A linked badge puts its padding on the anchor so the whole box is clickable. */
+.badges li:has(a) { padding: 0; }
+.badges a { display: block; padding: 0.35rem 0.75rem; text-decoration: none; }
+.badges a:hover { background: var(--muted); }
+
 /* --- cards --- */
 .card { padding: 1.5rem; display: block; }
 .card.wide p + p { margin-top: 1rem; }
