@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>404 - Arne Giacomo Munthe-Kaas</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#fff7e8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1815" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23ffdc58' stroke='%23000' stroke-width='10'/><text y='72' x='50' text-anchor='middle' font-family='monospace' font-size='58' font-weight='bold'>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Geist+Mono:wght@400;500&family=Space+Grotesk:wght@700&display=swap">
+<link rel="stylesheet" href="/css/style.css">
+<script>
+  (() => {
+    const t = localStorage.getItem('theme');
+    if (t) document.documentElement.dataset.theme = t;
+    const l = localStorage.getItem('lang') || (navigator.language || 'en').slice(0, 2);
+    document.documentElement.lang = ['en', 'no', 'it'].includes(l) ? l : 'en';
+  })();
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="controls block">
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="no">NO</button>
+    <button type="button" data-lang="it">IT</button>
+    <button type="button" id="theme" data-i18n-attr="aria-label:a11y.theme">
+      <span class="only-light">☀</span><span class="only-dark">☾</span>
+    </button>
+  </div>
+</div>
+
+<main>
+  <section class="notfound">
+    <h1 data-i18n="nf.title">404</h1>
+    <p class="lead" data-i18n="nf.body"></p>
+    <a class="card block link c-primary" href="/">
+      <span class="meta">arnegiacomo.dev</span>
+      <strong data-i18n="nf.home"></strong>
+    </a>
+  </section>
+</main>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
