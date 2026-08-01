@@ -267,11 +267,21 @@ a { color: inherit; }
   transform: rotate(var(--tilt, 0deg));
 }
 
-.chip svg { width: 55%; height: 55%; fill: var(--on-accent); }
+/* Official brand colours. OpenJDK's registered hex is #000000, unusable as a
+   chip background, so Java uses its brand orange. Glyph colour is whichever of
+   black/white scores higher contrast on that background. */
+.chip.b-vue  { background: #28795A; --glyph: #ffffff; }
+.chip.b-ts   { background: #3178C6; --glyph: #ffffff; }
+.chip.b-java { background: #C74634; --glyph: #ffffff; }
+.chip.b-k8s  { background: #326CE5; --glyph: #ffffff; }
+.chip.b-rpi  { background: #A22846; --glyph: #ffffff; }
+
+.chip svg { width: 66%; height: 66%; fill: var(--glyph); }
 
 /* Java and Raspberry Pi are outline marks; the others are solid. A stroke
-   thickens them so all five carry the same visual weight. */
-.p3 svg, .p5 svg { stroke: var(--on-accent); stroke-width: 0.5; stroke-linejoin: round; }
+   thickens them to match. Keyed to the mark, not the position, so the chips
+   can be reordered without silently losing it. */
+.b-java svg, .b-rpi svg { stroke: var(--glyph); stroke-width: 0.5; stroke-linejoin: round; }
 
 .p1 { top: -6%;  left: -14%; --tilt: -8deg; }
 .p2 { top: 13%;  left: 84%;  --tilt: 7deg; }
