@@ -69,6 +69,47 @@ body{margin:0;width:1400px;height:480px;overflow:hidden;display:flex;align-items
 )
 
 
+# AGMK is unreadable at 16px - four glyphs at roughly 7px each. That size gets
+# AG instead, which is the top row of the same monogram, so the two sizes read as
+# one mark rather than two. Browsers pick per size via the sizes attribute.
+MONO = """
+<style>
+ html,body{margin:0;padding:0;width:SIZEpx;height:SIZEpx;overflow:hidden;
+           background:#ffdc58;background-image:none}
+ .m{width:SIZEpx;height:SIZEpx;background:#ffdc58;color:#000;display:grid;
+    place-content:center;font-family:var(--head);font-weight:800;
+    font-size:FSpx;line-height:LH;letter-spacing:-.04em;text-align:center}
+ span{display:block}
+</style>
+<div class="m">LINES</div>"""
+
+#        px   lines        font-size ratio  line-height  output
+FAVICONS = [
+    (16,  ["AG"],         0.62,  "1",   "assets/favicon-16.png"),
+    (32,  ["AG", "MK"],   0.45,  ".84", "assets/favicon-32.png"),
+    (180, ["AG", "MK"],   0.45,  ".84", "assets/apple-touch-icon.png"),
+]
+
+
+def render_favicon(chrome, size, lines, ratio, lh, out):
+    tpl = (MONO.replace("SIZE", str(size))
+               .replace("FS", f"{size * ratio:.2f}")
+               .replace("LH", lh)
+               .replace("LINES", "".join(f"<span>{l}</span>" for l in lines)))
+    page = '<!doctype html><html data-theme="light"><meta charset=utf-8>' + STYLE + tpl
+    fd, tmp = tempfile.mkstemp(suffix=".html", dir=ROOT)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(page)
+        subprocess.run([chrome, "--headless", "--disable-gpu", "--no-sandbox",
+                        f"--screenshot={os.path.join(ROOT, out)}",
+                        f"--window-size={size},{size}", "--hide-scrollbars",
+                        "file://" + tmp], check=True, capture_output=True)
+    finally:
+        os.unlink(tmp)
+    print(f"  {out:44} {size}x{size}  {''.join(lines)}")
+
+
 def find_chrome():
     for path in CHROME_CANDIDATES:
         if os.path.exists(path):
@@ -135,6 +176,8 @@ def main():
     render(chrome, OG, sprite, chips, os.path.join(ROOT, "assets/og-light.png"), light=True)
     if args.banner:
         render(chrome, BANNER, sprite, chips, args.banner, light=True)
+    for size, lines, ratio, lh, out in FAVICONS:
+        render_favicon(chrome, size, lines, ratio, lh, out)
 
 
 if __name__ == "__main__":
