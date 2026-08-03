@@ -387,6 +387,20 @@ a.card:active {
   opacity: 0.7;
 }
 
+/* Grid rows stretch, so the cards are already equal height - this pushes the
+   meta line to the floor of each one instead of letting it ride up under a
+   short description. Keeps the tag rows aligned across the row. */
+.project { display: flex; flex-direction: column; }
+
+/* The tag list is the longest line in the card and has to survive on one row -
+   two rows leave a ragged gap above the floored baseline. Tightened rather than
+   shortened: mono tracking and the spaces around each separator are the cheapest
+   width to buy back before the type gets too small to read. */
+.project .meta {
+  margin-top: auto;
+  letter-spacing: 0.01em;
+  word-spacing: -0.3em;
+}
 .project p { margin-bottom: 1rem; }
 
 .project-head {
@@ -398,20 +412,26 @@ a.card:active {
   margin-bottom: 0.75rem;
 }
 
-/* Source badge. Sits on the card's own accent colour, so it takes the neutral
-   card background rather than a palette colour of its own - the lock glyph and
-   the label carry the open/closed distinction. Kept shorter than the h3 line
-   box (border and shadow included) so the title, not the badge, sets the
-   header row height and the card keeps its vertical rhythm. */
+/* Source badge. Outlined, not filled. A filled box on top of the card's filled
+   accent reads as a patch of surface no matter which colour it takes - and
+   making it darker to fix that just puts metadata in competition with the
+   project title, which is the wrong hierarchy. Letting the accent show through
+   an outline keeps it legible without promoting it.
+
+   Black in both themes rather than following --ink: the card underneath keeps
+   its accent colour in dark mode, so a themed value would flip light there and
+   lose the outline against it.
+
+   No box at all - no fill, no border, no shadow. Every other bordered element
+   on the page is a surface or a control; this is neither, and the lock glyph
+   already carries the open/closed distinction on its own. Dropping the chrome
+   also drops the padding, which lets the label sit flush with the card's own
+   padding edge instead of floating a few pixels inside it. */
 .src {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.2rem 0.45rem;
-  background: var(--card);
-  color: var(--ink);
-  border: var(--border) solid var(--line);
-  box-shadow: 2px 2px 0 0 var(--shadow-color);
+  color: #000000;
   font: 500 0.62rem/1 var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -427,9 +447,6 @@ a.card:active {
   stroke-linecap: round;
 }
 
-/* Filled lock body for open, hollow for closed, so the two read apart at a
-   glance even before the label. */
-.src-open svg rect { fill: currentColor; }
 .link strong { font-size: 1.1rem; display: block; margin-top: 0.35rem; word-break: break-word; }
 
 .notfound { margin-top: 3rem; }

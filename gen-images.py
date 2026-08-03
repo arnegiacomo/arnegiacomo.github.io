@@ -43,7 +43,7 @@ body{margin:0;width:1200px;height:630px;overflow:hidden;display:flex;align-items
 """,
     body='<div class="txt"><p class="eyebrow">FULLSTACK DEVELOPER</p>'
          '<h1>Arne Giacomo<br>Munthe-Kaas</h1>'
-         '<p class="lead">Web and cloud development, mostly for banking and finance.</p>'
+         '<p class="lead">Fintech at work, software and hardware projects in my free time.</p>'
          '<span class="url">arnegiacomo.dev</span></div>',
 )
 
@@ -75,8 +75,8 @@ body{margin:0;width:1400px;height:480px;overflow:hidden;display:flex;align-items
 MONO = """
 <style>
  html,body{margin:0;padding:0;width:SIZEpx;height:SIZEpx;overflow:hidden;
-           background:#ffdc58;background-image:none}
- .m{width:SIZEpx;height:SIZEpx;background:#ffdc58;color:#000;display:grid;
+           background:var(--primary);background-image:none}
+ .m{width:SIZEpx;height:SIZEpx;background:var(--primary);color:var(--on-accent);display:grid;
     place-content:center;font-family:var(--head);font-weight:800;
     font-size:FSpx;line-height:LH;letter-spacing:-.04em;text-align:center}
  span{display:block}

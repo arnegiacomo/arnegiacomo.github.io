@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Arne Giacomo Munthe-Kaas</title>
-<meta name="description" content="Bergen-based fullstack developer working on web and cloud systems, mostly in banking and finance.">
+<meta name="description" content="Fullstack developer in Bergen. Fintech at work, software and hardware projects in my free time.">
 <meta property="og:title" content="Arne Giacomo Munthe-Kaas">
-<meta property="og:description" content="Bergen-based fullstack developer working on web and cloud systems, mostly in banking and finance.">
+<meta property="og:description" content="Fullstack developer in Bergen. Fintech at work, software and hardware projects in my free time.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arnegiacomo.dev/">
 <!-- og.png is a screenshot of a throwaway page built from css/style.css, not a
      build artefact. It does not follow changes to the name, tagline or palette
-     on its own - rerun `python3 gen-images.py` after editing any of them. -->
-<meta property="og:image" content="https://arnegiacomo.dev/assets/og.png">
+     on its own - rerun `python3 gen-images.py` after editing any of them.
+     Scrapers cache by image URL, so bump ?v= whenever the card changes. -->
+<meta property="og:image" content="https://arnegiacomo.dev/assets/og.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Arne Giacomo Munthe-Kaas - fullstack developer, Bergen">
@@ -84,13 +85,11 @@
       <span class="chip block b-rpi   p5" role="img" aria-label="Raspberry Pi"><svg><use href="#i-rpi"/></svg></span>
     </div>
     <div class="hero-text">
-      <p class="eyebrow" data-i18n="hero.eyebrow"></p>
       <h1>Arne Giacomo<br>Munthe-Kaas</h1>
       <p class="lead" data-i18n="hero.lead"></p>
       <ul class="badges">
         <li class="block" data-i18n="hero.badge1"></li>
         <li class="block"><a href="https://www.stacc.com" data-i18n="hero.badge2"></a></li>
-        <li class="block" data-i18n="hero.badge3"></li>
       </ul>
     </div>
   </header>
@@ -105,10 +104,13 @@
 
   <section>
     <h2 data-i18n="stack.title"></h2>
+    <!-- Grouped languages, frameworks, data, infra, observability - reading order
+         carries the grouping, so keep new entries with their own kind. -->
     <ul class="tags">
-      <li class="block">Java</li><li class="block">Quarkus</li><li class="block">TypeScript</li>
-      <li class="block">Vue</li><li class="block">Python</li><li class="block">PostgreSQL</li>
-      <li class="block">Kubernetes</li><li class="block">Docker</li><li class="block">Linux</li>
+      <li class="block">Java</li><li class="block">TypeScript</li><li class="block">Python</li>
+      <li class="block">Quarkus</li><li class="block">Vue</li>
+      <li class="block">PostgreSQL</li>
+      <li class="block">Docker</li><li class="block">Kubernetes</li><li class="block">Linux</li>
       <li class="block">Azure</li><li class="block">Grafana</li>
     </ul>
   </section>
@@ -136,7 +138,7 @@
           </span>
         </div>
         <p data-i18n="projects.tablesummit"></p>
-        <span class="meta">TypeScript · Vue · Hono + Bun · PostgreSQL · Docker</span>
+        <span class="meta">Football · TypeScript · Vue · Hono + Bun · PostgreSQL · Docker</span>
       </a>
     </div>
   </section>
