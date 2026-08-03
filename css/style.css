@@ -387,8 +387,49 @@ a.card:active {
   opacity: 0.7;
 }
 
-.project h3 { margin-bottom: 0.6rem; }
 .project p { margin-bottom: 1rem; }
+
+.project-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+/* Source badge. Sits on the card's own accent colour, so it takes the neutral
+   card background rather than a palette colour of its own - the lock glyph and
+   the label carry the open/closed distinction. Kept shorter than the h3 line
+   box (border and shadow included) so the title, not the badge, sets the
+   header row height and the card keeps its vertical rhythm. */
+.src {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.45rem;
+  background: var(--card);
+  color: var(--ink);
+  border: var(--border) solid var(--line);
+  box-shadow: 2px 2px 0 0 var(--shadow-color);
+  font: 500 0.62rem/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.src svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+/* Filled lock body for open, hollow for closed, so the two read apart at a
+   glance even before the label. */
+.src-open svg rect { fill: currentColor; }
 .link strong { font-size: 1.1rem; display: block; margin-top: 0.35rem; word-break: break-word; }
 
 .notfound { margin-top: 3rem; }
