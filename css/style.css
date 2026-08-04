@@ -357,19 +357,32 @@ a { color: inherit; }
   gap: 1.5rem;
 }
 
-a.card {
+a.card, .card.stretch {
   text-decoration: none;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-a.card:hover, a.card:focus-visible {
+a.card:hover, a.card:focus-visible,
+.card.stretch:hover, .card.stretch:focus-within {
   transform: translate(-2px, -2px);
   box-shadow: var(--drop-lg) var(--drop-lg) 0 0 var(--shadow-color);
 }
 
-a.card:active {
+a.card:active, .card.stretch:active {
   transform: translate(var(--drop), var(--drop));
   box-shadow: 0 0 0 0 var(--shadow-color);
+}
+
+/* A card that carries its own links can't be an <a> - nesting anchors is
+   invalid. The title link covers the card with a pseudo-element instead, and
+   the inner links are lifted above that overlay so they stay clickable. */
+.card.stretch { position: relative; }
+.card.stretch a { text-decoration: none; }
+.stretch-target::after { content: ''; position: absolute; inset: 0; }
+.card.stretch a:not(.stretch-target) {
+  position: relative;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .c-primary, .c-violet, .c-teal, .c-lime, .c-pink { color: var(--on-accent); }
@@ -402,6 +415,8 @@ a.card:active {
   word-spacing: -0.3em;
 }
 .project p { margin-bottom: 1rem; }
+
+.credit { font-size: 0.85rem; opacity: 0.85; }
 
 .project-head {
   display: flex;

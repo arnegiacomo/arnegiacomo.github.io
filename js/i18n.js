@@ -16,6 +16,7 @@ const TRANSLATIONS = {
     'projects.closed': 'Closed source',
     'projects.fugleramme': 'E-ink frame showing which birds have been in the garden. BirdNET-Go handles detection on a Raspberry Pi with a USB mic; fugleramme draws the results as public-domain illustrations. Full setup guide in the docs if you want to build your own.',
     'projects.tablesummit': 'Predict how a football league finishes, then watch your score move as results come in. Compete with friends, family or strangers, in private leagues or globally. Live with the World Cup, Champions League, Premier League and more. Free to join.',
+    'projects.tablesummit.credit': 'Built together with my friend',
     'links.title': 'Get in touch',
     'links.email': 'Email'
   },
@@ -36,6 +37,7 @@ const TRANSLATIONS = {
     'projects.closed': 'Lukket kildekode',
     'projects.fugleramme': 'E-ink-ramme som viser hvilke fugler som har vært i hagen. BirdNET-Go står for gjenkjenningen på en Raspberry Pi med USB-mikrofon; fuglerammen tegner resultatene som public domain-illustrasjoner. Full oppsettsguide i dokumentasjonen hvis du vil bygge din egen.',
     'projects.tablesummit': 'Tipp hvordan en fotballiga ender, og se poengsummen bevege seg etter hvert som resultatene kommer inn. Konkurrer med venner, familie eller fremmede, i private ligaer eller globalt. Live med VM, CL, PL og mer. Gratis å bli med.',
+    'projects.tablesummit.credit': 'Bygget sammen med min venn',
     'links.title': 'Ta kontakt',
     'links.email': 'E-post'
   },
@@ -56,6 +58,7 @@ const TRANSLATIONS = {
     'projects.closed': 'Codice chiuso',
     'projects.fugleramme': 'Cornice e-ink che mostra quali uccelli sono passati in giardino. BirdNET-Go si occupa del riconoscimento su un Raspberry Pi con microfono USB; fugleramme disegna i risultati come illustrazioni di pubblico dominio. Guida completa al montaggio nella documentazione, se vuoi costruirne una.',
     'projects.tablesummit': 'Pronostica come finirà un campionato di calcio e guarda il tuo punteggio muoversi mano a mano che arrivano i risultati. Sfida amici, familiari o sconosciuti, in leghe private o a livello globale. Online con Mondiali, CL, PL e altro. L\'iscrizione è gratuita.',
+    'projects.tablesummit.credit': 'Sviluppato insieme al mio amico',
     'links.title': 'Contattami',
     'links.email': 'Email'
   }
