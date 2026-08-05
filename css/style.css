@@ -1,6 +1,5 @@
-/* Self-hosted so the page makes no third-party requests. Regenerate by
-   re-fetching the Google Fonts CSS with a modern UA and downloading the
-   woff2 files it points at. */
+/* Self-hosted: no third-party requests. Regenerate from the Google Fonts CSS
+   fetched with a modern UA. */
 @font-face {
   font-family: 'Geist';
   font-style: normal;
@@ -255,8 +254,7 @@ a { color: inherit; }
   display: flex;
 }
 
-/* Tech marks float around the portrait and overhang its edges. Offsets are
-   percentages of the wrapper, so they track the portrait at any size. */
+/* Offsets are percentages of the wrapper, so the marks track the portrait size. */
 .chip {
   --size: 3.1rem;
   position: absolute;
@@ -267,20 +265,54 @@ a { color: inherit; }
   transform: rotate(var(--tilt, 0deg));
 }
 
-/* Official brand colours. OpenJDK's registered hex is #000000, unusable as a
-   chip background, so Java uses its brand orange. Glyph colour is whichever of
-   black/white scores higher contrast on that background. */
-.chip.b-vue  { background: #28795A; --glyph: #ffffff; }
+/* Brand colour, white glyph, 4.5:1 minimum. Where the official hex is too light
+   for that it is scaled towards black, keeping the hue - trailing comments give
+   the official hex and the contrast it would have had. Java and Rust register
+   #000000, so they borrow their brand orange and rust-lang.org's red.
+
+   JavaScript and Bun are negative space - the glyph is the badge, the holes are
+   the letters and the face - so those two invert to match the real logo. */
+.chip.b-vue  { background: #28795A; --glyph: #ffffff; }  /* #4FC08D, 2.3:1 */
 .chip.b-ts   { background: #3178C6; --glyph: #ffffff; }
 .chip.b-java { background: #C74634; --glyph: #ffffff; }
 .chip.b-k8s  { background: #326CE5; --glyph: #ffffff; }
 .chip.b-rpi  { background: #A22846; --glyph: #ffffff; }
 
+/* Snake food (js/snake.js). Each id needs an #i-<id> in assets/snake-icons.svg. */
+.chip.b-python    { background: #3776AB; --glyph: #ffffff; }
+.chip.b-quarkus   { background: #3979C0; --glyph: #ffffff; }  /* #4695EB, 3.1:1 */
+.chip.b-pg        { background: #4169E1; --glyph: #ffffff; }
+.chip.b-docker    { background: #1E7BC2; --glyph: #ffffff; }  /* #2496ED, 3.2:1 */
+.chip.b-linux     { background: #FCC624; --glyph: #000000; }  /* Tux, dark on yellow */
+.chip.b-grafana   { background: #C65400; --glyph: #ffffff; }  /* #F46800, 3.1:1 */
+.chip.b-bun       { background: #181717; --glyph: #FBF0DF; }  /* inverted */
+.chip.b-node      { background: #4E8340; --glyph: #ffffff; }  /* #5FA04E, 3.2:1 */
+.chip.b-rust      { background: #CE422B; --glyph: #ffffff; }
+.chip.b-hono      { background: #C55402; --glyph: #ffffff; }  /* #E36002, 3.5:1 */
+.chip.b-maven     { background: #C71A36; --glyph: #ffffff; }
+.chip.b-gradle    { background: #02303A; --glyph: #ffffff; }
+.chip.b-gha       { background: #1C75DB; --glyph: #ffffff; }  /* #2088FF, 3.5:1 */
+.chip.b-bitbucket { background: #0052CC; --glyph: #ffffff; }
+.chip.b-bash      { background: #3E861D; --glyph: #ffffff; }  /* #4EAA25, 3.0:1 */
+.chip.b-github    { background: #181717; --glyph: #ffffff; }
+.chip.b-git       { background: #DD372A; --glyph: #ffffff; }  /* #F03C2E, 3.9:1 */
+.chip.b-js        { background: #181717; --glyph: #F7DF1E; }  /* inverted */
+.chip.b-html      { background: #D04823; --glyph: #ffffff; }  /* #E34F26, 3.9:1 */
+.chip.b-css       { background: #663399; --glyph: #ffffff; }
+.chip.b-otel      { background: #425CC7; --glyph: #ffffff; }  /* registers #000000; brand blue */
+.chip.b-arduino   { background: #00838B; --glyph: #ffffff; }  /* #00878F, 4.3:1 */
+.chip.b-esp       { background: #DF332A; --glyph: #ffffff; }  /* #E7352C, 4.3:1 */
+.chip.b-nginx     { background: #008934; --glyph: #ffffff; }  /* #009639, 3.9:1 */
+.chip.b-keycloak  { background: #4D4D4D; --glyph: #ffffff; }
+.chip.b-helm      { background: #0F1689; --glyph: #ffffff; }
+
 .chip svg { width: 66%; height: 66%; fill: var(--glyph); }
 
-/* Java and Raspberry Pi are outline marks; the others are solid. A stroke
-   thickens them to match. Keyed to the mark, not the position, so the chips
-   can be reordered without silently losing it. */
+/* The JS mark is a full-bleed badge, so inset it and the chip reads as a ring
+   around it. */
+.b-js svg { width: 100%; height: 100%; }
+
+/* Outline marks; a stroke thickens them to match the solid ones. */
 .b-java svg, .b-rpi svg { stroke: var(--glyph); stroke-width: 0.5; stroke-linejoin: round; }
 
 .p1 { top: -6%;  left: -14%; --tilt: -8deg; }
@@ -297,9 +329,8 @@ a { color: inherit; }
   background: var(--primary);
 }
 
-/* Absolute so height:100% has a definite containing block - otherwise the image
-   keeps its intrinsic aspect and object-fit silently does nothing.
-   Swap to `contain` + `center bottom` for a full-body cutout standing in the panel. */
+/* Absolute so height:100% has a containing block, without which object-fit does
+   nothing. Swap to `contain` + `center bottom` for a full-body cutout. */
 .portrait img {
   position: absolute;
   inset: 0;
@@ -373,9 +404,8 @@ a.card:active, .card.stretch:active {
   box-shadow: 0 0 0 0 var(--shadow-color);
 }
 
-/* A card that carries its own links can't be an <a> - nesting anchors is
-   invalid. The title link covers the card with a pseudo-element instead, and
-   the inner links are lifted above that overlay so they stay clickable. */
+/* A card with its own links can't be an <a>. The title link covers it with a
+   pseudo-element instead; inner links sit above that overlay. */
 .card.stretch { position: relative; }
 .card.stretch a { text-decoration: none; }
 .stretch-target::after { content: ''; position: absolute; inset: 0; }
@@ -400,15 +430,10 @@ a.card:active, .card.stretch:active {
   opacity: 0.7;
 }
 
-/* Grid rows stretch, so the cards are already equal height - this pushes the
-   meta line to the floor of each one instead of letting it ride up under a
-   short description. Keeps the tag rows aligned across the row. */
+/* Floors the meta line so tag rows line up across the row. */
 .project { display: flex; flex-direction: column; }
 
-/* The tag list is the longest line in the card and has to survive on one row -
-   two rows leave a ragged gap above the floored baseline. Tightened rather than
-   shortened: mono tracking and the spaces around each separator are the cheapest
-   width to buy back before the type gets too small to read. */
+/* Tightened tracking and word spacing to keep the tag list on one row. */
 .project .meta {
   margin-top: auto;
   letter-spacing: 0.01em;
@@ -427,21 +452,9 @@ a.card:active, .card.stretch:active {
   margin-bottom: 0.75rem;
 }
 
-/* Source badge. Outlined, not filled. A filled box on top of the card's filled
-   accent reads as a patch of surface no matter which colour it takes - and
-   making it darker to fix that just puts metadata in competition with the
-   project title, which is the wrong hierarchy. Letting the accent show through
-   an outline keeps it legible without promoting it.
-
-   Black in both themes rather than following --ink: the card underneath keeps
-   its accent colour in dark mode, so a themed value would flip light there and
-   lose the outline against it.
-
-   No box at all - no fill, no border, no shadow. Every other bordered element
-   on the page is a surface or a control; this is neither, and the lock glyph
-   already carries the open/closed distinction on its own. Dropping the chrome
-   also drops the padding, which lets the label sit flush with the card's own
-   padding edge instead of floating a few pixels inside it. */
+/* No box: every other bordered element here is a surface or a control, and the
+   lock glyph carries the distinction on its own. Black in both themes - the card
+   keeps its accent colour in dark mode. */
 .src {
   display: inline-flex;
   align-items: center;
@@ -464,6 +477,27 @@ a.card:active, .card.stretch:active {
 
 .link strong { font-size: 1.1rem; display: block; margin-top: 0.35rem; word-break: break-word; }
 
+/* --- snake easter egg (js/snake.js) --- */
+
+/* Holds the chips for the length of a run. Fixed, so the walls the snake dies
+   against are the viewport edges. */
+#snake-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* Position comes from an inline transform, so the .p1-.p5 offsets have to go. */
+.chip.snake-seg, .chip.snake-food { top: 0; left: 0; }
+
+/* Pulses rather than moves - transform belongs to the game loop. */
+.chip.snake-food { animation: snake-food 1.5s ease-in-out infinite; }
+@keyframes snake-food { 50% { opacity: 0.7; } }
+
+#snake-stage.dead .chip { animation: snake-dead 200ms steps(2, end) 3; }
+@keyframes snake-dead { 50% { opacity: 0.2; } }
+
 .notfound { margin-top: 3rem; }
 .notfound h1 { font-size: clamp(5rem, 22vw, 11rem); margin-bottom: 1rem; }
 .notfound .lead { margin-bottom: 2rem; }
@@ -482,15 +516,12 @@ footer {
   body { padding: 1rem 1rem 2.5rem; font-size: 16px; }
   main, .topbar { max-width: none; }
   main { gap: 2.75rem; }
-  /* Full-width band rather than a floating group, so it stays balanced and the
-     tap targets get bigger. */
+  /* Full-width band: bigger tap targets. */
   .topbar { margin-bottom: 2rem; }
   .controls { width: 100%; }
   .controls button { flex: 1; padding-inline: 0; }
   .hero { gap: 1.75rem; }
-  /* The portrait goes wide and centred rather than sitting as a small block in
-     the corner. Chip offsets are percentages, so the composition scales with it.
-     The 78% cap keeps a gutter wide enough for the chips at any phone width. */
+  /* The 78% cap leaves a gutter wide enough for the chips at any phone width. */
   .portrait-wrap { flex-basis: min(17rem, 78%); margin-inline: auto; }
   .p1 { left: -13%; }
   .p3 { left: -14%; }
