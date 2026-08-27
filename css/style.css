@@ -443,6 +443,10 @@ a.card:active, .card.stretch:active {
 
 .credit { font-size: 0.85rem; opacity: 0.85; }
 
+/* Floors the credit line as well, so credit and meta line up across the row. */
+.project .credit { margin-top: auto; }
+.project .credit ~ .meta { margin-top: 0; }
+
 .project-head {
   display: flex;
   align-items: center;
