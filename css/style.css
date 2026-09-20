@@ -445,7 +445,8 @@ a.card:active, .card.stretch:active {
 
 /* Floors the credit line as well, so credit and meta line up across the row. */
 .project .credit { margin-top: auto; }
-.project .credit ~ .meta { margin-top: 0; }
+.project .credit ~ .meta,
+.project .credit ~ .project-foot { margin-top: 0; }
 
 .project-head {
   display: flex;
@@ -477,6 +478,52 @@ a.card:active, .card.stretch:active {
   stroke: currentColor;
   stroke-width: 1.6;
   stroke-linecap: round;
+}
+
+
+/* --- repo stats --- */
+
+/* Bottom-right of the card, opposite the stack line. Labels are for screen
+   readers; sighted readers get the icons. */
+.project-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+.project-foot .meta { margin-top: 0; }
+
+.repo-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+  font: 500 0.78rem/1 var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.repo-stats dt {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.repo-stats dd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+}
+
+.repo-stats svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  fill: currentColor;
+  opacity: 0.75;
 }
 
 .link strong { font-size: 1.1rem; display: block; margin-top: 0.35rem; word-break: break-word; }
